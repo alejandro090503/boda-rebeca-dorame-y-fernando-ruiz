@@ -18,8 +18,8 @@
   <meta property="og:url"         content="https://boda-rebeca-dorame-y-fernando-ruiz.vercel.app/">
   <meta property="og:title"       content="💍 Rebeca &amp; Fernando · 19 · Diciembre · 2026">
   <meta property="og:description" content="Nos casamos y queremos que estés ahí · Abre tu invitación ✉️">
-  <meta property="og:image"       content="https://boda-rebeca-dorame-y-fernando-ruiz.vercel.app/og-image.jpg">
-  <meta property="og:image:secure_url" content="https://boda-rebeca-dorame-y-fernando-ruiz.vercel.app/og-image.jpg">
+  <meta property="og:image"       content="https://boda-rebeca-dorame-y-fernando-ruiz.vercel.app/og-image.jpg?v=2">
+  <meta property="og:image:secure_url" content="https://boda-rebeca-dorame-y-fernando-ruiz.vercel.app/og-image.jpg?v=2">
   <meta property="og:image:type"  content="image/jpeg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -31,7 +31,7 @@
   <meta name="twitter:url"         content="https://boda-rebeca-dorame-y-fernando-ruiz.vercel.app/">
   <meta name="twitter:title"       content="💍 Rebeca &amp; Fernando · 19 · Diciembre · 2026">
   <meta name="twitter:description" content="Nos casamos y queremos que estés ahí · Abre tu invitación ✉️">
-  <meta name="twitter:image"       content="https://boda-rebeca-dorame-y-fernando-ruiz.vercel.app/og-image.jpg">
+  <meta name="twitter:image"       content="https://boda-rebeca-dorame-y-fernando-ruiz.vercel.app/og-image.jpg?v=2">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -2575,6 +2575,97 @@ section:nth-of-type(3n) .ttl .v-w{animation-delay:-4.6s}
   #petalos{display:none}
   #elyMenu,#elyNav{transition:none}
 }
+
+/* ═══════ Ajustes: video nítido, halo, contador y corazón ═══════ */
+.hero-bg{inset:0 0 -80px 0!important}
+.hero-drift video{object-position:50% 50%}
+@keyframes heroDrift{from{transform:translate3d(-.5%,-.3%,0) scale(1.015)}to{transform:translate3d(.5%,.3%,0) scale(1.05)}}
+.hero-glints{opacity:.5}
+
+/* Halo suave para que el texto no se pierda con las tintas */
+.main-wrap>section:not(#hero) .lbl,.main-wrap>section:not(#hero) p,.loc-name,.tl-ev,.tl-t,.tl-de,.dc-fig-label,.dc-fig-sub,.dc-group h3,.dc-ball,.cd-ring-lbl,.g3-pista,.ft-dt,.ft-note{
+  text-shadow:0 0 4px #FBF5EA,0 0 9px #FBF5EA,0 0 16px rgba(251,245,234,.98),0 0 28px rgba(251,245,234,.9)!important}
+.ttl,.ft-nms{filter:drop-shadow(0 0 3px rgba(251,245,234,.98)) drop-shadow(0 0 9px rgba(251,245,234,.92))}
+.loc-card p,.loc-card h3,.cal-month p,.rsvp-card p,.rsvp-gracias p{text-shadow:none!important}
+.ne-quote{position:relative;isolation:isolate}
+.ne-quote::before,.ne-author::before{content:'';position:absolute;z-index:-1;pointer-events:none;background:radial-gradient(ellipse closest-side,rgba(251,245,234,.96) 0%,rgba(251,245,234,.88) 55%,rgba(251,245,234,0) 100%)}
+.ne-quote::before{inset:-34px -26px}
+.ne-author{position:relative;isolation:isolate}
+.ne-author::before{inset:-14px 18%}
+
+/* Cuenta regresiva circular, horizontal y minimalista */
+.cdx{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;max-width:348px;margin:34px auto 0}
+.cdx-i{display:flex;flex-direction:column;align-items:center;gap:9px;min-width:0}
+.cdx-c{position:relative;width:100%;max-width:78px;aspect-ratio:1;border-radius:50%;background:rgba(255,253,248,.78);box-shadow:0 5px 16px rgba(85,16,41,.08)}
+.cdx-c svg{position:absolute;inset:0;width:100%;height:100%;transform:rotate(-90deg);overflow:visible}
+.cdx-t{fill:none;stroke:rgba(184,150,46,.3);stroke-width:1.6}
+.cdx-p{fill:none;stroke:url(#cdxG);stroke-width:3;stroke-linecap:round;stroke-dasharray:326.73;stroke-dashoffset:326.73;transition:stroke-dashoffset .6s ease}
+.cdx .cd-num{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif!important;font-size:26px!important;font-weight:500!important;line-height:1!important;color:var(--olive)!important;font-variant-numeric:lining-nums tabular-nums}
+.cdx .cd-ring-lbl{position:static!important;font-family:'Lato',sans-serif!important;font-size:14px!important;font-weight:600!important;letter-spacing:0!important;text-transform:none!important;color:var(--cream)!important;white-space:nowrap}
+.cdx-i.tick .cd-num{animation:vGlow .9s ease-out}
+
+/* 19: corazón brillante */
+.cal-day.is-today{position:relative!important;z-index:1;background:none!important;border:0!important;box-shadow:none!important;outline:0!important;color:#fff!important;font-family:'Lato',sans-serif!important;font-size:15px!important;font-weight:700!important;overflow:visible!important;text-shadow:0 1px 2px rgba(58,18,34,.75)!important;animation:none!important}
+.cal-day.is-today::before,.cal-day.is-today::after{content:''!important;position:absolute!important;left:50%!important;top:50%!important;right:auto!important;bottom:auto!important;width:48px!important;height:46px!important;margin:-22px 0 0 -24px!important;border:0!important;border-radius:0!important;box-shadow:none!important;opacity:1;pointer-events:none}
+.cal-day.is-today::before{z-index:-2;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 23'%3E%3Cdefs%3E%3ClinearGradient id='h' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23A33A62'/%3E%3Cstop offset='.5' stop-color='%23551029'/%3E%3Cstop offset='1' stop-color='%233A0A1C'/%3E%3C/linearGradient%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23FFF0B8'/%3E%3Cstop offset='.5' stop-color='%23D4AF37'/%3E%3Cstop offset='1' stop-color='%238C6D12'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M12 21.6C5.6 15.8 1.2 11.9 1.2 7.3 1.2 3.8 4 1.2 7.2 1.2c2 0 3.8 1 4.8 2.7 1-1.7 2.8-2.7 4.8-2.7 3.2 0 6 2.6 6 6.1 0 4.6-4.4 8.5-10.8 14.3z' fill='url(%23h)' stroke='url(%23g)' stroke-width='.9'/%3E%3C/svg%3E") center/contain no-repeat!important;filter:drop-shadow(0 0 5px rgba(212,175,55,.75));animation:calHeart 2.6s ease-in-out infinite!important}
+.cal-day.is-today::after{z-index:-1;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 23'%3E%3Cdefs%3E%3ClinearGradient id='s' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23fff' stop-opacity='.75'/%3E%3Cstop offset='.36' stop-color='%23fff' stop-opacity='0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M12 21.6C5.6 15.8 1.2 11.9 1.2 7.3 1.2 3.8 4 1.2 7.2 1.2c2 0 3.8 1 4.8 2.7 1-1.7 2.8-2.7 4.8-2.7 3.2 0 6 2.6 6 6.1 0 4.6-4.4 8.5-10.8 14.3z' fill='url(%23s)'/%3E%3C/svg%3E") center/contain no-repeat!important;animation:calShine 2.6s ease-in-out infinite!important}
+@keyframes calHeart{0%,100%{transform:scale(1)}50%{transform:scale(1.09)}}
+@keyframes calShine{0%,100%{opacity:.35;transform:scale(1)}50%{opacity:1;transform:scale(1.09)}}
+@media(prefers-reduced-motion:reduce){.cal-day.is-today::before,.cal-day.is-today::after,.cdx-i.tick .cd-num{animation:none!important}}
+
+/* ═══════ Hero limpio, halo general, itinerario brillante y menú premium ═══════ */
+.h-cnt{padding-bottom:112px!important}
+.h-name{font-size:clamp(50px,15vw,64px)!important}
+.hero-veil{height:62%}
+
+/* Halo difuminado en todo texto que va directo sobre el fondo */
+.ink-bg{opacity:.72}
+.main-wrap>section:not(#hero)>.lbl,.main-wrap>section:not(#hero)>.ttl,.cal-sub,.gf-sub,.alb-sub,.alb-hint,.dc-sub,.dc-tip,.dc-free,.dc-group h3,.dc-fig-label,.dc-fig-sub,.g3-pista,.tl-prov,.fam-group-title,.fam-role,.fam-names,.padrino-rol,.padrino-names,#footer .ft-nms,#footer .ft-dt,#footer .ft-note{
+  display:block;width:fit-content;max-width:100%;margin-left:auto;margin-right:auto;border-radius:999px;
+  background:rgba(251,245,234,.74);box-shadow:0 0 20px 15px rgba(251,245,234,.74)}
+.main-wrap>section:not(#hero)>.ttl{filter:none}
+.cdx .cd-ring-lbl,.dc-ball{background:rgba(251,245,234,.62);box-shadow:0 0 10px 6px rgba(251,245,234,.62);border-radius:999px}
+.tl-row-inner{background:transparent!important;box-shadow:none!important;padding:0!important}
+.tl-t,.tl-ev,.tl-de{display:block;width:fit-content;background:rgba(251,245,234,.68);box-shadow:0 0 7px 4px rgba(251,245,234,.68);border-radius:8px}
+.tl-row[data-side="right"] .tl-t,.tl-row[data-side="right"] .tl-ev,.tl-row[data-side="right"] .tl-de{margin-left:auto}
+.tl-svg{z-index:2!important}
+.tl-row{z-index:auto!important}
+.tl-row-inner{position:relative;z-index:3}
+
+/* Números del contador centrados */
+.cdx-c .cd-num{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;margin:0!important;padding:0!important;display:flex!important;align-items:center!important;justify-content:center!important;text-align:center!important;letter-spacing:0!important}
+
+/* Itinerario: línea viva en capas con perla */
+.tl-row{min-height:112px!important;margin-bottom:8px!important}
+.tl-prov{font-family:'Lato',sans-serif;font-size:15px;font-weight:600;color:var(--cream);text-align:center;margin-top:22px}
+.tl-layer{fill:none;stroke-linecap:round}
+.tl-l-glow{stroke:rgba(212,175,55,.2);stroke-width:13}
+.tl-l-mid{stroke:rgba(232,207,122,.5);stroke-width:6}
+.tl-svg-path{stroke-width:2.8!important}
+.tl-l-core{stroke:#FFF3C9;stroke-width:1;animation:tlCore 2.8s ease-in-out infinite}
+.tl-pearl{fill:#FFFBEA;stroke:#D4AF37;stroke-width:1.4;opacity:0}
+.tl-pearl-h{fill:rgba(212,175,55,.38);opacity:0}
+@keyframes tlCore{0%,100%{opacity:.35}50%{opacity:1}}
+
+/* Menú que se expande desde el botón */
+#elyMenu{--mx:50%;--my:92%;background:radial-gradient(circle at 50% 22%,rgba(212,175,55,.2),transparent 48%),linear-gradient(165deg,#6A1835 0%,#551029 46%,#320917 100%);opacity:1;clip-path:circle(0px at var(--mx) var(--my));transition:clip-path .62s cubic-bezier(.65,0,.35,1);overflow:hidden auto}
+#elyMenu.on{opacity:1;clip-path:circle(150vmax at var(--mx) var(--my));transition:clip-path .85s cubic-bezier(.22,1,.36,1)}
+.em-ring{position:fixed;left:var(--mx);top:var(--my);width:60px;height:60px;margin:-30px 0 0 -30px;border-radius:50%;border:1px solid rgba(232,207,122,.85);opacity:0;pointer-events:none}
+#elyMenu.on .em-ring{animation:emRing 1.25s cubic-bezier(.16,1,.3,1) both}
+#elyMenu.on .em-r2{animation-delay:.16s}
+@keyframes emRing{0%{opacity:.9;transform:scale(.4)}100%{opacity:0;transform:scale(17)}}
+#emClose{color:#F7E7CE!important;opacity:0;transition:opacity .3s}
+#elyMenu.on #emClose{opacity:1;transition:opacity .5s .55s}
+.em-rule{width:170px;background:linear-gradient(90deg,transparent,#E8CF7A,transparent);transform:scaleX(0);transition:transform .3s}
+#elyMenu.on .em-rule{transform:scaleX(1);transition:transform 1s cubic-bezier(.22,1,.36,1) .3s}
+#emList li{opacity:0;transform:translateY(22px) scale(.97);transition:opacity .18s,transform .18s}
+#elyMenu.on #emList li{opacity:1;transform:none;transition:opacity .65s ease,transform .75s cubic-bezier(.22,1,.36,1);transition-delay:calc(240ms + var(--i)*58ms)}
+#emList a{color:#FFF8E8!important}
+#emList a.cur{color:#E8CF7A!important}
+@media(prefers-reduced-motion:reduce){
+  #elyMenu,#elyMenu.on,#emList li,#elyMenu.on #emList li,.em-rule,#elyMenu.on .em-rule,#emClose,#elyMenu.on #emClose{transition:none!important}
+  .em-ring,#elyMenu.on .em-ring,.tl-l-core{animation:none!important}
+}
 </style>
 </head>
 <body>
@@ -2641,7 +2732,7 @@ section:nth-of-type(3n) .ttl .v-w{animation-delay:-4.6s}
 <section id="hero">
   <!-- Fondo decorativo (sin foto, capas ricas crema/dorado/rosa) -->
   <div class="hero-bg" aria-hidden="true">
-    <i class="hero-drift"><video id="heroVideo" src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/video/boda-rebeca-dorame-y-fernando-ruiz/hero.mp4" poster="assets/hero-poster.jpg" muted playsinline loop preload="metadata" disableremoteplayback></video></i>
+    <i class="hero-drift"><video id="heroVideo" src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/video/boda-rebeca-dorame-y-fernando-ruiz/hero-hd.mp4" poster="assets/hero-poster.jpg" muted playsinline loop preload="metadata" disableremoteplayback></video></i>
     <div class="hero-glints"><b></b><b></b><b></b><b></b></div>
     <div class="hero-lens"></div>
     <div class="hero-dust" id="heroDust"></div>
@@ -2706,20 +2797,9 @@ section:nth-of-type(3n) .ttl .v-w{animation-delay:-4.6s}
       <span class="h-name-wind-line"></span>
     </div>
 
-    <div class="h-date-wrap" id="hDate">
-      <p class="h-date-day">19</p>
-      <p class="h-date">Diciembre 2026</p>
-      <div class="h-city-wrap">
-        <p class="h-city">Ricardo Flores Magón<br>Chihuahua</p>
-      </div>
     </div>
-  </div>
 
-  <div class="h-scroll" id="hScroll">
-    <div class="h-scroll-line"></div>
-    <span>Desliza</span>
-  </div>
-</section>
+  </section>
 
 
 <!-- ═══════════════ 1B. CITA NERUDA ══════════════════ -->
@@ -2760,66 +2840,11 @@ section:nth-of-type(3n) .ttl .v-w{animation-delay:-4.6s}
   <h2 class="ttl">Cuenta Regresiva</h2>
   <div class="gline"></div>
 
-  <div class="cd-ring-grid">
-    <div class="cd-ring-item" id="cd-item-d">
-      <svg class="cd-ring-svg" viewBox="0 0 120 120">
-        <circle class="cd-ring-track" cx="60" cy="60" r="52"/>
-        <circle class="cd-ring-prog"  cx="60" cy="60" r="52" id="ring-d"/>
-      </svg>
-      <div class="cd-rotor"><span class="cd-dot"></span></div>
-      <div class="cd-ripple"></div>
-      <div class="cd-ring-center">
-        <span class="cd-num" id="cd-d">--</span>
-        <span class="cd-ring-lbl">Días</span>
-      </div>
-    </div>
-
-    <div class="cd-ring-item" id="cd-item-h">
-      <svg class="cd-ring-svg" viewBox="0 0 120 120">
-        <circle class="cd-ring-track" cx="60" cy="60" r="52"/>
-        <circle class="cd-ring-prog"  cx="60" cy="60" r="52" id="ring-h"/>
-      </svg>
-      <div class="cd-rotor cd-rotor-mid"><span class="cd-dot"></span></div>
-      <div class="cd-ripple"></div>
-      <div class="cd-ring-center">
-        <span class="cd-num" id="cd-h">--</span>
-        <span class="cd-ring-lbl">Horas</span>
-      </div>
-    </div>
-
-    <div class="cd-ring-item" id="cd-item-m">
-      <svg class="cd-ring-svg" viewBox="0 0 120 120">
-        <circle class="cd-ring-track" cx="60" cy="60" r="52"/>
-        <circle class="cd-ring-prog"  cx="60" cy="60" r="52" id="ring-m"/>
-      </svg>
-      <div class="cd-rotor cd-rotor-rev"><span class="cd-dot"></span></div>
-      <div class="cd-ripple"></div>
-      <div class="cd-ring-center">
-        <span class="cd-num" id="cd-m">--</span>
-        <span class="cd-ring-lbl">Minutos</span>
-      </div>
-    </div>
-
-    <div class="cd-ring-item" id="cd-item-s">
-      <svg class="cd-ring-svg" viewBox="0 0 120 120">
-        <circle class="cd-ring-track" cx="60" cy="60" r="52"/>
-        <circle class="cd-ring-prog"  cx="60" cy="60" r="52" id="ring-s"/>
-      </svg>
-      <div class="cd-rotor cd-rotor-fast"><span class="cd-dot"></span></div>
-      <div class="cd-ripple"></div>
-      <div class="cd-ring-center">
-        <span class="cd-num" id="cd-s">--</span>
-        <span class="cd-ring-lbl">Segundos</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- ondas decorativas inferiores -->
-  <div class="cd-wave-bot" aria-hidden="true">
-    <svg viewBox="0 0 800 50" preserveAspectRatio="none">
-      <path d="M0,25 Q100,5 200,25 T400,25 T600,25 T800,25" fill="none" stroke="rgba(122,42,69,.22)" stroke-width="1"/>
-      <path d="M0,18 Q100,36 200,18 T400,18 T600,18 T800,18" fill="none" stroke="rgba(212,197,178,.13)" stroke-width=".8"/>
-    </svg>
+  <div class="cdx">
+    <div class="cdx-i" id="cd-item-d"><div class="cdx-c"><svg viewBox="0 0 120 120" aria-hidden="true"><defs><linearGradient id="cdxG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8C6D12"/><stop offset=".5" stop-color="#D4AF37"/><stop offset="1" stop-color="#551029"/></linearGradient></defs><circle class="cdx-t" cx="60" cy="60" r="52"/><circle class="cdx-p" cx="60" cy="60" r="52" id="ring-d"/></svg><span class="cd-num" id="cd-d">--</span></div><span class="cd-ring-lbl">Días</span></div>
+    <div class="cdx-i" id="cd-item-h"><div class="cdx-c"><svg viewBox="0 0 120 120" aria-hidden="true"><circle class="cdx-t" cx="60" cy="60" r="52"/><circle class="cdx-p" cx="60" cy="60" r="52" id="ring-h"/></svg><span class="cd-num" id="cd-h">--</span></div><span class="cd-ring-lbl">Horas</span></div>
+    <div class="cdx-i" id="cd-item-m"><div class="cdx-c"><svg viewBox="0 0 120 120" aria-hidden="true"><circle class="cdx-t" cx="60" cy="60" r="52"/><circle class="cdx-p" cx="60" cy="60" r="52" id="ring-m"/></svg><span class="cd-num" id="cd-m">--</span></div><span class="cd-ring-lbl">Minutos</span></div>
+    <div class="cdx-i" id="cd-item-s"><div class="cdx-c"><svg viewBox="0 0 120 120" aria-hidden="true"><circle class="cdx-t" cx="60" cy="60" r="52"/><circle class="cdx-p" cx="60" cy="60" r="52" id="ring-s"/></svg><span class="cd-num" id="cd-s">--</span></div><span class="cd-ring-lbl">Segundos</span></div>
   </div>
 </section>
 
@@ -3014,7 +3039,7 @@ section:nth-of-type(3n) .ttl .v-w{animation-delay:-4.6s}
         </filter>
       </defs>
       <path class="tl-svg-bg"   id="tlPathBg"/>
-      <path class="tl-svg-path" id="tlPath"/>
+      <path class="tl-layer tl-l-glow"/><path class="tl-layer tl-l-mid"/><path class="tl-svg-path" id="tlPath"/><path class="tl-layer tl-l-core"/><circle class="tl-pearl-h" id="tlPearlH" r="11"/><circle class="tl-pearl" id="tlPearl" r="4.5"/>
     </svg>
 
     <div class="tl-row" data-side="left">
@@ -3023,9 +3048,38 @@ section:nth-of-type(3n) .ttl .v-w{animation-delay:-4.6s}
     </div>
     <div class="tl-row" data-side="right">
       <div class="tl-orn"></div><div class="tl-pulse"></div><div class="tl-dot"></div>
+      <div class="tl-row-inner"><p class="tl-t">7:30 PM</p><p class="tl-ev">Sesión de fotos</p><p class="tl-de">Novios y familia</p></div>
+    </div>
+    <div class="tl-row" data-side="left">
+      <div class="tl-orn"></div><div class="tl-pulse"></div><div class="tl-dot"></div>
       <div class="tl-row-inner"><p class="tl-t">9:00 PM</p><p class="tl-ev">Recepción</p><p class="tl-de">Quinta Santa Cecilia</p></div>
     </div>
+    <div class="tl-row" data-side="right">
+      <div class="tl-orn"></div><div class="tl-pulse"></div><div class="tl-dot"></div>
+      <div class="tl-row-inner"><p class="tl-t">9:30 PM</p><p class="tl-ev">Entrada de los novios</p><p class="tl-de">Recíbelos con un aplauso</p></div>
+    </div>
+    <div class="tl-row" data-side="left">
+      <div class="tl-orn"></div><div class="tl-pulse"></div><div class="tl-dot"></div>
+      <div class="tl-row-inner"><p class="tl-t">9:45 PM</p><p class="tl-ev">Primer baile</p><p class="tl-de">Nuestro vals</p></div>
+    </div>
+    <div class="tl-row" data-side="right">
+      <div class="tl-orn"></div><div class="tl-pulse"></div><div class="tl-dot"></div>
+      <div class="tl-row-inner"><p class="tl-t">10:15 PM</p><p class="tl-ev">Cena</p><p class="tl-de">Servicio en mesa</p></div>
+    </div>
+    <div class="tl-row" data-side="left">
+      <div class="tl-orn"></div><div class="tl-pulse"></div><div class="tl-dot"></div>
+      <div class="tl-row-inner"><p class="tl-t">11:15 PM</p><p class="tl-ev">Brindis</p><p class="tl-de">Por los novios</p></div>
+    </div>
+    <div class="tl-row" data-side="right">
+      <div class="tl-orn"></div><div class="tl-pulse"></div><div class="tl-dot"></div>
+      <div class="tl-row-inner"><p class="tl-t">11:30 PM</p><p class="tl-ev">Apertura de pista</p><p class="tl-de">¡Todos a bailar!</p></div>
+    </div>
+    <div class="tl-row" data-side="left">
+      <div class="tl-orn"></div><div class="tl-pulse"></div><div class="tl-dot"></div>
+      <div class="tl-row-inner"><p class="tl-t">2:00 AM</p><p class="tl-ev">Despedida</p><p class="tl-de">Gracias por acompañarnos</p></div>
+    </div>
   </div>
+  <p class="tl-prov">Horarios sujetos a cambios</p>
 </section>
 
 
@@ -3496,7 +3550,7 @@ window.addEventListener('scroll', () => {
 
 /* ── HERO ANIMATIONS — REDISEÑO EDITORIAL ─────────── */
 function heroAnim() {
-  gsap.set(['#hWe','#hDiv','#hDate','#hScroll'], { opacity: 0 });
+  gsap.set(['#hWe','#hDiv'], { opacity: 0 });
   gsap.set(['#hN1','#hN2','#hAmp'], {
     opacity: 0, y: 24,
     filter: 'blur(6px)', transformOrigin: 'center center'
@@ -3513,9 +3567,7 @@ function heroAnim() {
     .to('#hDiv',   { opacity: 1, duration: .5, ease: 'power2.out' }, .35)
     .add(rise('#hN1'), .55)
     .add(rise('#hAmp'), 1.05)
-    .add(rise('#hN2'), 1.35)
-    .to('#hDate',  { opacity: 1, duration: 1, ease: 'power2.out' }, 2.15)
-    .to('#hScroll',{ opacity: 1, duration: .5, ease: 'power2.out' }, 2.65);
+    .add(rise('#hN2'), 1.35);
 }
 
 /* ── PARTÍCULAS CON FÍSICA — CAEN · REBOTAN BAJO · SE DESVANECEN ── */
@@ -3690,6 +3742,7 @@ function buildSPath(cfg) {
     const len = path.getTotalLength();
     path.style.strokeDasharray  = len;
     path.style.strokeDashoffset = len;
+    svg.querySelectorAll('.tl-layer').forEach(l => { l.setAttribute('d', d); l.style.strokeDasharray = len; l.style.strokeDashoffset = len; });
 
     window[cfg.stateKey] = { path, len, rows };
     if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
@@ -3728,7 +3781,7 @@ function scrollAnims() {
   });
 
   // Countdown rings — entrada suave (sin scale, evita que queden encogidos)
-  gsap.from('.cd-ring-item', {
+  gsap.from('.cdx-i', {
     opacity: 0, y: 22,
     duration: .65, stagger: .11,
     ease: 'power3.out',
@@ -3770,7 +3823,11 @@ function scrollAnims() {
       const data = window.__tlData;
       if (!data) return;
       const { path, len, rows } = data;
-      path.style.strokeDashoffset = len * (1 - self.progress);
+      const off = len * (1 - self.progress);
+      path.style.strokeDashoffset = off;
+      document.querySelectorAll('#tlSvg .tl-layer').forEach(l => { l.style.strokeDashoffset = off; });
+      const pt = path.getPointAtLength(len * self.progress), on = self.progress > .01 && self.progress < .995 ? 1 : 0;
+      ['tlPearl', 'tlPearlH'].forEach(id => { const c = document.getElementById(id); c.setAttribute('cx', pt.x); c.setAttribute('cy', pt.y); c.style.opacity = on; });
       const n = Math.ceil(self.progress * rows.length);
       rows.forEach((r, i) => r.classList.toggle('on', i < n));
     }
@@ -4269,6 +4326,7 @@ function toast(msg) {
   <button id="enOpen" type="button" aria-haspopup="dialog" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>Menú</button>
 </nav>
 <div id="elyMenu" role="dialog" aria-modal="true" aria-label="Menú de secciones" hidden>
+  <span class="em-ring" aria-hidden="true"></span><span class="em-ring em-r2" aria-hidden="true"></span>
   <button id="emClose" type="button" aria-label="Cerrar menú">×</button>
   <span class="em-rule" aria-hidden="true"></span>
   <ol id="emList"></ol>
@@ -4338,8 +4396,9 @@ function initElyNav(calm){
     .filter(function(x){ return document.getElementById(x[0]); });
   var nav = document.getElementById('elyNav'), menu = document.getElementById('elyMenu'), list = document.getElementById('emList'),
       openB = document.getElementById('enOpen'), closeB = document.getElementById('emClose');
-  SECS.forEach(function(x){
+  SECS.forEach(function(x, i){
     var li = document.createElement('li');
+    li.style.setProperty('--i', i);
     li.innerHTML = '<a href="#' + x[0] + '" data-s="' + x[0] + '">' + x[1] + '</a>';
     list.appendChild(li);
   });
@@ -4354,10 +4413,13 @@ function initElyNav(calm){
   SECS.forEach(function(x){ spy.observe(document.getElementById(x[0])); });
   function hide(){
     menu.classList.remove('on'); openB.setAttribute('aria-expanded', 'false'); document.body.style.overflow = '';
-    setTimeout(function(){ menu.hidden = true; }, calm ? 0 : 400); openB.focus({ preventScroll: true });
+    setTimeout(function(){ menu.hidden = true; }, calm ? 0 : 640); openB.focus({ preventScroll: true });
   }
   openB.addEventListener('click', function(){
     stopAutoScroll();
+    var b = openB.getBoundingClientRect();
+    menu.style.setProperty('--mx', (b.left + b.width / 2) + 'px');
+    menu.style.setProperty('--my', (b.top + b.height / 2) + 'px');
     menu.hidden = false; void menu.offsetWidth; menu.classList.add('on');
     openB.setAttribute('aria-expanded', 'true'); document.body.style.overflow = 'hidden'; closeB.focus();
   });
