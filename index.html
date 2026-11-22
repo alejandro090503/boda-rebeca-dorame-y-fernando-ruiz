@@ -2301,34 +2301,38 @@ body{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:18px;line-
   .rs-lluvia{display:none}
 }
 
-/* ── CARRUSEL 3D CON ESPEJO (g3-) ── */
-#fotos-final{background:#FBF5EA!important;overflow:hidden}
-.g3-wrap{width:100%;max-width:760px;margin:28px auto 0;overflow:hidden}
-.g3-escena{--g3-w:120px;--g3-h:213px;--g3-p:900px;position:relative;width:100%;height:calc(var(--g3-h)*1.36 + 26px);perspective:var(--g3-p);perspective-origin:50% 40%;overflow:hidden;cursor:grab;touch-action:pan-y;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent}
-.g3-escena.g3-arrastrando{cursor:grabbing}
-.g3-anillo{position:absolute;inset:0;transform-style:preserve-3d;-webkit-transform-style:preserve-3d;will-change:transform}
-.g3-card{position:absolute;left:50%;top:8px;width:var(--g3-w);height:var(--g3-h);margin:0 0 0 calc(var(--g3-w)/-2);padding:0;border:0;background:none;cursor:inherit;backface-visibility:hidden;-webkit-backface-visibility:hidden;touch-action:pan-y;-webkit-tap-highlight-color:transparent}
-.g3-card:focus-visible{outline:2px solid #551029;outline-offset:3px}
-.g3-foto{position:absolute;inset:0;display:block;overflow:hidden;border-radius:10px;border:1.5px solid #D4AF37;background:#F7E7CE;box-shadow:0 8px 20px rgba(58,18,34,.22)}
-.g3-foto img{width:100%;height:100%;display:block;object-fit:cover;pointer-events:none;-webkit-user-drag:none}
-.g3-espejo{position:absolute;left:0;right:0;top:calc(100% + 5px);height:34%;display:block;overflow:hidden;border-radius:10px 10px 0 0;pointer-events:none}
-.g3-espejo img{position:absolute;left:0;top:0;width:100%;height:calc(var(--g3-h));display:block;object-fit:cover;transform:scaleY(-1)}
-.g3-espejo::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(251,245,234,.58) 0%,rgba(251,245,234,.86) 48%,#FBF5EA 92%)}
-.g3-pista{margin:10px 0 0;text-align:center;font-family:'Lato',sans-serif;font-size:16px;font-weight:600;line-height:1.4;color:#551029}
-
-.g3-lb{position:fixed;inset:0;z-index:100002;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(32,10,20,.94);opacity:0;transition:opacity .28s ease;touch-action:none;overscroll-behavior:contain}
-.g3-lb.g3-on{display:flex}
-.g3-lb.g3-vis{opacity:1}
-.g3-lb-img{display:block;max-width:100%;max-height:calc(100dvh - 120px);width:auto;height:auto;border-radius:8px;border:1.5px solid #D4AF37;transform:scale(.96);transition:transform .28s ease}
-.g3-lb.g3-vis .g3-lb-img{transform:none}
-.g3-lb-btn{position:absolute;width:48px;height:48px;display:flex;align-items:center;justify-content:center;padding:0;border:1.5px solid #D4AF37;border-radius:50%;background:rgba(58,18,34,.9);color:#F7E7CE;cursor:pointer;touch-action:manipulation}
-.g3-lb-btn svg{width:22px;height:22px;display:block}
-.g3-lb-btn:focus-visible{outline:2px solid #F7E7CE;outline-offset:2px}
-.g3-lb-x{top:calc(12px + env(safe-area-inset-top));right:12px}
-.g3-lb-ant{left:12px;bottom:calc(14px + env(safe-area-inset-bottom))}
-.g3-lb-sig{right:12px;bottom:calc(14px + env(safe-area-inset-bottom))}
+/* ── UN RECUERDO: baraja de 3 fotos impresas ── */
+.bj-wrap{--bw:min(62vw,262px);--bx:min(21vw,88px);margin:30px auto 0;max-width:100%}
+.bj{position:relative;height:calc(var(--bw)*1.5 + 46px);touch-action:pan-y;-webkit-user-select:none;user-select:none}
+.bj-card{position:absolute;left:50%;top:18px;width:var(--bw);margin-left:calc(var(--bw)/-2);padding:0;border:0;background:none;cursor:pointer;touch-action:pan-y;-webkit-tap-highlight-color:transparent;transition:transform .85s cubic-bezier(.34,1.32,.64,1)}
+.bj-card:focus-visible{outline:2px solid #551029;outline-offset:4px}
+.bj-card[data-pos="0"]{z-index:3;transform:translateX(0) rotate(-1.5deg) scale(1)}
+.bj-card[data-pos="1"]{z-index:2;transform:translateX(var(--bx)) rotate(9deg) scale(.84)}
+.bj-card[data-pos="2"]{z-index:1;transform:translateX(calc(var(--bx)*-1)) rotate(-9deg) scale(.84)}
+.bj:not(.bj-in) .bj-card{transform:translateX(0) rotate(0deg) scale(.96)}
+.bj-frame{position:relative;display:block;overflow:hidden;padding:7px;border-radius:5px;background:#FFFDF8;border:1px solid #D4AF37;box-shadow:0 16px 30px rgba(58,18,34,.26),0 3px 8px rgba(58,18,34,.14)}
+.bj-frame img{display:block;width:100%;height:auto;aspect-ratio:854/1280;object-fit:cover;border-radius:2px;pointer-events:none}
+.bj-card[data-pos="0"] .bj-frame{animation:levitate 6.5s ease-in-out infinite}
+.bj-frame::after{content:'';position:absolute;top:-12%;bottom:-12%;left:0;width:42%;pointer-events:none;background:linear-gradient(100deg,transparent,rgba(255,244,205,.55),transparent);transform:translateX(-170%) skewX(-14deg)}
+.bj-card.bj-sheen .bj-frame::after{animation:bjSheen 1.25s .3s ease-out both}
+@keyframes bjSheen{from{transform:translateX(-170%) skewX(-14deg)}to{transform:translateX(330%) skewX(-14deg)}}
+.bj-dots{display:flex;justify-content:center;gap:4px;margin-top:6px}
+.bj-dots button{position:relative;width:44px;height:44px;padding:0;border:0;background:none;cursor:pointer}
+.bj-dots button::before{content:'';position:absolute;left:50%;top:50%;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;border:1.5px solid #8C6D12;transition:transform .3s,background .3s}
+.bj-dots button.on::before{background:#551029;border-color:#551029;transform:scale(1.25)}
+.bj-pista{margin:0 auto;width:fit-content;text-align:center;font-family:'Lato',sans-serif!important;font-size:16px;font-weight:600;color:var(--cream)}
+.bj-view{position:fixed;inset:0;z-index:100002;display:flex;align-items:center;justify-content:center;padding:calc(66px + env(safe-area-inset-top)) 14px calc(84px + env(safe-area-inset-bottom));background:rgba(35,10,20,.94);opacity:0;transition:opacity .28s ease;touch-action:pan-y}
+.bj-view[hidden]{display:none!important}
+.bj-view.on{opacity:1}
+.bj-view img{display:block;max-width:100%;max-height:100%;width:auto;height:auto;border-radius:4px;border:5px solid #FFFDF8}
+.bj-view button{position:absolute;width:48px;height:48px;border-radius:50%;border:1px solid #D4AF37;background:rgba(85,16,41,.72);color:#FFF8E8;font-size:24px;line-height:1;cursor:pointer}
+.bj-x{top:calc(12px + env(safe-area-inset-top));right:14px}
+.bj-prev{left:calc(50% - 62px);bottom:calc(18px + env(safe-area-inset-bottom))}
+.bj-next{right:calc(50% - 62px);bottom:calc(18px + env(safe-area-inset-bottom))}
 @media(prefers-reduced-motion:reduce){
-  .g3-lb,.g3-lb-img{transition:none}
+  .bj-card{transition:none}
+  .bj-card[data-pos="0"] .bj-frame,.bj-card.bj-sheen .bj-frame::after{animation:none}
+  .bj-view{transition:none}
 }
 
 /* ── VINILO ── el estado sonando acepta .is-playing y también .on (la clase que usa toggleMusic) */
@@ -2583,7 +2587,7 @@ section:nth-of-type(3n) .ttl .v-w{animation-delay:-4.6s}
 .hero-glints{opacity:.5}
 
 /* Halo suave para que el texto no se pierda con las tintas */
-.main-wrap>section:not(#hero) .lbl,.main-wrap>section:not(#hero) p,.loc-name,.tl-ev,.tl-t,.tl-de,.dc-fig-label,.dc-fig-sub,.dc-group h3,.dc-ball,.cd-ring-lbl,.g3-pista,.ft-dt,.ft-note{
+.main-wrap>section:not(#hero) .lbl,.main-wrap>section:not(#hero) p,.loc-name,.tl-ev,.tl-t,.tl-de,.dc-fig-label,.dc-fig-sub,.dc-group h3,.dc-ball,.cd-ring-lbl,.bj-pista,.ft-dt,.ft-note{
   text-shadow:0 0 4px #FBF5EA,0 0 9px #FBF5EA,0 0 16px rgba(251,245,234,.98),0 0 28px rgba(251,245,234,.9)!important}
 .ttl,.ft-nms{filter:drop-shadow(0 0 3px rgba(251,245,234,.98)) drop-shadow(0 0 9px rgba(251,245,234,.92))}
 .loc-card p,.loc-card h3,.cal-month p,.rsvp-card p,.rsvp-gracias p{text-shadow:none!important}
@@ -2620,7 +2624,7 @@ section:nth-of-type(3n) .ttl .v-w{animation-delay:-4.6s}
 
 /* Halo difuminado en todo texto que va directo sobre el fondo */
 .ink-bg{opacity:.72}
-.main-wrap>section:not(#hero)>.lbl,.main-wrap>section:not(#hero)>.ttl,.cal-sub,.gf-sub,.alb-sub,.alb-hint,.dc-sub,.dc-tip,.dc-free,.dc-group h3,.dc-fig-label,.dc-fig-sub,.g3-pista,.tl-prov,.fam-group-title,.fam-role,.fam-names,.padrino-rol,.padrino-names,#footer .ft-nms,#footer .ft-dt,#footer .ft-note{
+.main-wrap>section:not(#hero)>.lbl,.main-wrap>section:not(#hero)>.ttl,.cal-sub,.gf-sub,.alb-sub,.alb-hint,.dc-sub,.dc-tip,.dc-free,.dc-group h3,.dc-fig-label,.dc-fig-sub,.bj-pista,.tl-prov,.fam-group-title,.fam-role,.fam-names,.padrino-rol,.padrino-names,#footer .ft-nms,#footer .ft-dt,#footer .ft-note{
   display:block;width:fit-content;max-width:100%;margin-left:auto;margin-right:auto;border-radius:999px;
   background:rgba(251,245,234,.74);box-shadow:0 0 20px 15px rgba(251,245,234,.74)}
 .main-wrap>section:not(#hero)>.ttl{filter:none}
@@ -3324,14 +3328,17 @@ section:nth-of-type(3n) .ttl .v-w{animation-delay:-4.6s}
 <!-- ═══════════════ 12B. FOTOS FINALES ═══════════════ -->
 <section id="fotos-final">
   <img class="orn orn-n" src="adornos/orn-03.webp" alt="" aria-hidden="true" onerror="this.remove()" style="top:-42px;left:-92px;width:185px;--r:8deg">
-  <img class="orn orn-f" src="adornos/orn-08.webp" alt="" aria-hidden="true" onerror="this.remove()" style="top:462px;left:-51px;width:101px;--r:-16deg">
+  <img class="orn orn-f" src="adornos/orn-08.webp" alt="" aria-hidden="true" onerror="this.remove()" style="top:calc(100% - 130px);left:-51px;width:101px;--r:-16deg">
   <h2 class="ttl">Un Recuerdo</h2>
   <div class="gline"></div>
-  <div class="g3-wrap">
-  <div class="g3-escena" id="g3Escena" role="group" aria-label="Galería de fotos de los novios">
-    <div class="g3-anillo" id="g3Anillo"></div>
+  <div class="bj-wrap">
+  <div class="bj" id="bjDeck" role="group" aria-label="Fotos de los novios">
+    <button type="button" class="bj-card" data-i="0" data-pos="0"><span class="bj-frame"><img src="gallery/foto-3.jpg" alt="Rebeca y Fernando frente a la camioneta al atardecer" width="854" height="1280" draggable="false"></span></button>
+    <button type="button" class="bj-card" data-i="1" data-pos="1"><span class="bj-frame"><img src="gallery/foto-1.jpg" alt="Fernando besa a Rebeca al atardecer" width="854" height="1280" draggable="false"></span></button>
+    <button type="button" class="bj-card" data-i="2" data-pos="2"><span class="bj-frame"><img src="gallery/foto-2.jpg" alt="Rebeca y Fernando se miran y sonríen al atardecer" width="854" height="1280" draggable="false"></span></button>
   </div>
-  <p class="g3-pista">Desliza para girar · toca una foto</p>
+  <div class="bj-dots" id="bjDots"><button type="button" data-i="0" aria-label="Ver foto 1"></button><button type="button" data-i="1" aria-label="Ver foto 2"></button><button type="button" data-i="2" aria-label="Ver foto 3"></button></div>
+  <p class="bj-pista">Desliza o toca una foto</p>
 </div>
 </section>
 
@@ -4371,7 +4378,6 @@ window.__elyConfetti = function(){
   })(i);
 };
 
-window.G3_FOTOS = ["gallery/foto-1.jpg", "gallery/g01.jpg", "gallery/foto-2.jpg", "gallery/g03.jpg", "gallery/foto-3.jpg", "gallery/g08.jpg"];
 window.ELY_PETALOS = ["adornos/petal-1.webp", "adornos/petal-2.webp", "adornos/petal-3.webp"];
 function initElyNav(calm){
   var SECS = [['countdown','Cuenta regresiva'],['location','Lugares'],['itinerary','Itinerario'],['gifts','Lluvia de sobres'],['album','Álbum'],['dresscode','Vestimenta'],['family','Familia'],['rsvp','Confirmar'],['fotos-final','Galería']]
@@ -4626,164 +4632,100 @@ window.initSobres = function () {
   ScrollTrigger.create({ trigger: escena, start: 'center 60%', once: true, onEnter: aterrizar });
 };
 
-/* Carrusel 3D con espejo. Requiere GSAP + ScrollTrigger. Llamar initGaleria() una vez. */
+/* Un Recuerdo: baraja de 3 fotos (toca, desliza, visor) */
 window.initGaleria = function () {
-  var escena = document.getElementById('g3Escena'), anillo = document.getElementById('g3Anillo');
-  if (!escena || !anillo || escena.dataset.g3Init) return;
-  escena.dataset.g3Init = '1';
-
-  var fotos = (Array.isArray(window.G3_FOTOS) && window.G3_FOTOS.length) ? window.G3_FOTOS.slice() : [];
-  if (!fotos.length) for (var f = 1; f <= 8; f++) fotos.push('gallery/g0' + f + '.jpg');
-
-  var n = fotos.length, paso = 360 / n, reducido = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var AUTO = reducido ? 0 : 9;            /* grados por segundo */
-  var rot = 0, vel = AUTO, radio = 160, activo = false, enTicker = false;
-  var tarjetas = [];
-
-  fotos.forEach(function (src, i) {
-    var b = document.createElement('button');
-    b.type = 'button'; b.className = 'g3-card'; b.dataset.i = i;
-    b.setAttribute('aria-label', 'Ver foto ' + (i + 1) + ' de ' + n);
-    var marco = document.createElement('span'); marco.className = 'g3-foto';
-    var img = new Image(); img.src = src; img.alt = ''; img.decoding = 'async'; img.draggable = false;
-    marco.appendChild(img);
-    var espejo = document.createElement('span'); espejo.className = 'g3-espejo'; espejo.setAttribute('aria-hidden', 'true');
-    var refl = new Image(); refl.src = src; refl.alt = ''; refl.decoding = 'async'; refl.draggable = false;
-    espejo.appendChild(refl);
-    b.appendChild(marco); b.appendChild(espejo);
-    anillo.appendChild(b); tarjetas.push(b);
-  });
-
-  function pintar() { anillo.style.transform = 'translateZ(' + (-radio) + 'px) rotateY(' + rot.toFixed(3) + 'deg)'; }
-  function medir() {
-    var W = escena.clientWidth || 330;
-    var cw = Math.round(Math.max(104, Math.min(176, W * .36))), ch = Math.round(cw * 16 / 9);
-    radio = n > 2 ? Math.round((cw / 2) / Math.tan(Math.PI / n) * 1.08) : cw;
-    /* Con pocas fotos el anillo no puede salirse del ancho disponible */
-    radio = Math.min(radio, Math.round(W * .62));
-    escena.style.setProperty('--g3-w', cw + 'px');
-    escena.style.setProperty('--g3-h', ch + 'px');
-    escena.style.setProperty('--g3-p', Math.round(cw * 6.6) + 'px');
-    tarjetas.forEach(function (t, i) { t.style.transform = 'rotateY(' + (paso * i) + 'deg) translateZ(' + radio + 'px)'; });
-    pintar();
+  var deck = document.getElementById('bjDeck');
+  if (!deck || deck.dataset.listo) return;
+  deck.dataset.listo = '1';
+  var calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var cards = [].slice.call(deck.querySelectorAll('.bj-card')), dots = [].slice.call(document.querySelectorAll('#bjDots button'));
+  var n = cards.length, cur = 0, visible = false, pausa = 0, x0 = null, swiped = false, vista = null, vIdx = 0;
+  function paint(sheen) {
+    cards.forEach(function (c, i) {
+      var p = (i - cur + n) % n;
+      c.dataset.pos = p;
+      c.setAttribute('aria-label', p === 0 ? 'Ampliar foto' : 'Ver esta foto');
+      c.classList.remove('bj-sheen');
+    });
+    dots.forEach(function (d, i) { d.classList.toggle('on', i === cur); });
+    if (sheen) { void cards[cur].offsetWidth; cards[cur].classList.add('bj-sheen'); }
   }
-  medir();
-  var tResize;
-  window.addEventListener('resize', function () { clearTimeout(tResize); tResize = setTimeout(medir, 120); }, { passive: true });
-
-  /* ── Ticker: giro automático + inercia que regresa al giro ── */
-  var drag = false;
-  function tick(t, delta) {
-    if (drag) return;
-    var dt = Math.min(delta, 60) / 1000;
-    if (reducido) vel *= Math.exp(-dt * 5);
-    else vel += (AUTO - vel) * (1 - Math.exp(-dt * 2.1));
-    if (Math.abs(vel) < .01 && reducido) { vel = 0; return; }
-    rot += vel * dt;
-    pintar();
-  }
-  function encender() { if (!enTicker) { enTicker = true; gsap.ticker.add(tick); } }
-  function apagar() { if (enTicker) { enTicker = false; gsap.ticker.remove(tick); } }
-  function sincronizar() { if (activo && !lbAbierto()) encender(); else apagar(); }
-
-  ScrollTrigger.create({
-    trigger: escena, start: 'top bottom', end: 'bottom top',
-    onToggle: function (st) { activo = st.isActive; sincronizar(); }
+  function go(i) { cur = (i + n) % n; paint(true); }
+  function manual(i) { pausa = Date.now() + 9000; go(i); }
+  paint(false);
+  new IntersectionObserver(function (es) {
+    visible = es[0].isIntersecting;
+    if (visible) deck.classList.add('bj-in');
+  }, { threshold: .3 }).observe(deck);
+  if (!calm) setInterval(function () {
+    if (visible && !vista && !document.hidden && Date.now() > pausa) go(cur + 1);
+  }, 4600);
+  deck.addEventListener('pointerdown', function (e) { x0 = e.clientX; swiped = false; });
+  deck.addEventListener('pointerup', function (e) {
+    if (x0 === null) return;
+    var dx = e.clientX - x0; x0 = null;
+    if (Math.abs(dx) > 38) { swiped = true; manual(cur + (dx < 0 ? 1 : -1)); }
   });
-
-  /* ── Arrastre (eje X); el scroll vertical sigue libre con touch-action:pan-y ── */
-  var id = null, x0 = 0, y0 = 0, xAnt = 0, tAnt = 0, rot0 = 0, ignorarClic = false;
-  function avisar() { window.dispatchEvent(new Event('ely-interaccion')); }
-
-  escena.addEventListener('pointerdown', function (e) {
-    if (e.button && e.button !== 0) return;
-    id = e.pointerId; x0 = xAnt = e.clientX; y0 = e.clientY; tAnt = performance.now(); rot0 = rot;
-    avisar();
+  deck.addEventListener('pointercancel', function () { x0 = null; });
+  deck.addEventListener('click', function (e) {
+    var c = e.target.closest('.bj-card');
+    if (!c) return;
+    if (swiped) { swiped = false; return; }
+    var i = +c.dataset.i;
+    if (i === cur) abrir(i); else manual(i);
   });
-  escena.addEventListener('pointermove', function (e) {
-    if (e.pointerId !== id) return;
-    var dx = e.clientX - x0, dy = e.clientY - y0;
-    if (!drag) {
-      if (Math.abs(dx) < 7 || Math.abs(dx) < Math.abs(dy)) return;
-      drag = true; vel = 0;
-      escena.classList.add('g3-arrastrando');
-      try { escena.setPointerCapture(id); } catch (_) {}
-    }
-    var ahora = performance.now(), gradosPx = 180 / (Math.PI * radio);
-    rot = rot0 + dx * gradosPx;
-    var dtp = Math.max(ahora - tAnt, 8) / 1000;
-    vel = vel * .55 + ((e.clientX - xAnt) * gradosPx / dtp) * .45;
-    xAnt = e.clientX; tAnt = ahora;
-    pintar();
+  deck.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowRight') manual(cur + 1);
+    if (e.key === 'ArrowLeft') manual(cur - 1);
   });
-  function soltar(e) {
-    if (e.pointerId !== id) return;
-    var eraDrag = drag;
-    id = null; drag = false;
-    escena.classList.remove('g3-arrastrando');
-    if (eraDrag) {
-      ignorarClic = true;
-      setTimeout(function () { ignorarClic = false; }, 60);
-      if (performance.now() - tAnt > 90) vel = AUTO;
-      vel = Math.max(-260, Math.min(260, vel));
-    }
-  }
-  escena.addEventListener('pointerup', soltar);
-  escena.addEventListener('pointercancel', soltar);
-  /* Se abre en click (no en pointerup): así el clic del mismo toque no cae sobre el
-     fondo del lightbox recién abierto y lo cierra. También cubre Enter/Espacio. */
-  anillo.addEventListener('click', function (e) {
-    var c = e.target.closest('.g3-card');
-    if (!c || ignorarClic) return;
-    if (e.detail === 0) avisar();
-    abrir(+c.dataset.i);
-  });
+  dots.forEach(function (d, i) { d.addEventListener('click', function () { manual(i); }); });
 
-  /* ── Lightbox ── */
-  var lb = null, lbImg = null, actual = 0, regreso = null;
-  function lbAbierto() { return !!(lb && lb.classList.contains('g3-on')); }
-  function icono(d) { return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="' + d + '"/></svg>'; }
-  function crearLb() {
-    lb = document.createElement('div');
-    lb.className = 'g3-lb'; lb.setAttribute('role', 'dialog'); lb.setAttribute('aria-modal', 'true'); lb.setAttribute('aria-label', 'Foto ampliada');
-    lb.innerHTML = '<img class="g3-lb-img" alt="Foto de los novios">' +
-      '<button type="button" class="g3-lb-btn g3-lb-x" aria-label="Cerrar">' + icono('M6 6l12 12M18 6L6 18') + '</button>' +
-      '<button type="button" class="g3-lb-btn g3-lb-ant" aria-label="Foto anterior">' + icono('M15 5l-7 7 7 7') + '</button>' +
-      '<button type="button" class="g3-lb-btn g3-lb-sig" aria-label="Foto siguiente">' + icono('M9 5l7 7-7 7') + '</button>';
-    document.body.appendChild(lb);
-    lbImg = lb.querySelector('.g3-lb-img');
-    lb.querySelector('.g3-lb-x').addEventListener('click', cerrar);
-    lb.querySelector('.g3-lb-ant').addEventListener('click', function () { mostrar(actual - 1); });
-    lb.querySelector('.g3-lb-sig').addEventListener('click', function () { mostrar(actual + 1); });
-    lb.addEventListener('click', function (e) { if (e.target === lb) cerrar(); });
+  function crear() {
+    vista = document.createElement('div');
+    vista.className = 'bj-view'; vista.hidden = true;
+    vista.setAttribute('role', 'dialog'); vista.setAttribute('aria-modal', 'true'); vista.setAttribute('aria-label', 'Foto ampliada');
+    vista.innerHTML = '<img alt=""><button type="button" class="bj-x" aria-label="Cerrar">×</button><button type="button" class="bj-prev" aria-label="Foto anterior">‹</button><button type="button" class="bj-next" aria-label="Foto siguiente">›</button>';
+    document.body.appendChild(vista);
+    vista.querySelector('.bj-x').addEventListener('click', cerrar);
+    vista.querySelector('.bj-prev').addEventListener('click', function () { ver(vIdx - 1); });
+    vista.querySelector('.bj-next').addEventListener('click', function () { ver(vIdx + 1); });
+    vista.addEventListener('click', function (e) { if (e.target === vista) cerrar(); });
+    var sx = null;
+    vista.addEventListener('pointerdown', function (e) { sx = e.clientX; });
+    vista.addEventListener('pointerup', function (e) {
+      if (sx === null || e.target.closest('button')) { sx = null; return; }
+      var dx = e.clientX - sx; sx = null;
+      if (Math.abs(dx) > 38) ver(vIdx + (dx < 0 ? 1 : -1));
+    });
     document.addEventListener('keydown', function (e) {
-      if (!lbAbierto()) return;
+      if (vista.hidden) return;
       if (e.key === 'Escape') cerrar();
-      else if (e.key === 'ArrowLeft') mostrar(actual - 1);
-      else if (e.key === 'ArrowRight') mostrar(actual + 1);
+      if (e.key === 'ArrowRight') ver(vIdx + 1);
+      if (e.key === 'ArrowLeft') ver(vIdx - 1);
     });
   }
-  function mostrar(i) { actual = (i + n) % n; lbImg.src = fotos[actual]; }
+  var vistaEl = function () { if (!vista) crear(); return vista; };
+  function ver(i) {
+    vIdx = (i + n) % n;
+    var src = cards[vIdx].querySelector('img'), im = vista.querySelector('img');
+    im.src = src.getAttribute('src'); im.alt = src.alt;
+    cur = vIdx; paint(false);
+  }
   function abrir(i) {
-    if (!lb) crearLb();
-    regreso = document.activeElement;
-    mostrar(i);
-    lb.classList.add('g3-on');
-    void lb.offsetWidth;
-    lb.classList.add('g3-vis');
-    sincronizar();
-    lb.querySelector('.g3-lb-x').focus({ preventScroll: true });
+    var v = vistaEl();
+    pausa = Date.now() + 9000;
+    ver(i); v.hidden = false; void v.offsetWidth; v.classList.add('on');
+    document.body.style.overflow = 'hidden';
+    v.querySelector('.bj-x').focus();
   }
   function cerrar() {
-    lb.classList.remove('g3-vis');
-    setTimeout(function () {
-      lb.classList.remove('g3-on');
-      sincronizar();
-    }, reducido ? 0 : 280);
-    if (regreso && regreso.focus) regreso.focus({ preventScroll: true });
+    vista.classList.remove('on');
+    document.body.style.overflow = '';
+    pausa = Date.now() + 9000;
+    setTimeout(function () { vista.hidden = true; }, calm ? 0 : 280);
+    cards[cur].focus({ preventScroll: true });
   }
 };
-
 </script>
 </body>
 </html>
